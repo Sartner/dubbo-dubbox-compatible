@@ -15,7 +15,7 @@
 
 ```xml
 <dependency>
-    <groupId>com.github.sartner</groupId>
+    <groupId>io.github.sartner</groupId>
     <artifactId>dubbo-dubbox-compatible</artifactId>
     <version>2.7.7</version>
 </dependency>
@@ -27,7 +27,7 @@
 
 ```xml
 <dependency>
-    <groupId>com.github.sartner</groupId>
+    <groupId>io.github.sartner</groupId>
     <artifactId>dubbo-dubbox-compatible</artifactId>
     <version>2.7.7</version>
 </dependency>
