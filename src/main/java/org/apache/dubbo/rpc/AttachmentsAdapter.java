@@ -21,7 +21,7 @@ import java.util.Map;
 
 /**
  * This class provides map adapters to support attachments in RpcContext, Invocation and Result switch from
- * <String, String> to <String, Object>
+ * &lt;String, String&gt; to &lt;String, Object&gt;
  */
 public class AttachmentsAdapter {
 

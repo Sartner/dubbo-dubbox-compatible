@@ -156,25 +156,24 @@ public final class Version {
 
     private static final Pattern PREFIX_DIGITS_PATTERN = Pattern.compile("^([0-9]*).*");
 
+    /**
+     * For protocol compatibility purpose.
+     * Because {@link #isSupportResponseAttachment} is checked for every call, int compare expect to has higher
+     * performance than string.
+     */
     public static final int LOWEST_VERSION_FOR_RESPONSE_ATTACHMENT = 2000200; // 2.0.2
+    public static final int HIGHEST_PROTOCOL_VERSION = 2009900; // 2.0.99
 
     public static boolean isSupportResponseAttachment(String version) {
         if (StringUtils.isEmpty(version)) {
             return false;
         }
-        // for previous dubbo version(2.0.10/020010~2.6.2/020602), this version is the jar's version, so they need to
-        // be ignore
         int iVersion = getIntVersion(version);
-        if (iVersion >= 2001000 && iVersion < 2060300) {
-            return false;
+        if (iVersion >= LOWEST_VERSION_FOR_RESPONSE_ATTACHMENT && iVersion <= HIGHEST_PROTOCOL_VERSION) {
+            return true;
         }
 
-        // 2.8.x is reserved for dubbox
-        if (iVersion >= 2080000 && iVersion < 2090000) {
-            return false;
-        }
-
-        return iVersion >= LOWEST_VERSION_FOR_RESPONSE_ATTACHMENT;
+        return false;
     }
 
     public static int getIntVersion(String version) {

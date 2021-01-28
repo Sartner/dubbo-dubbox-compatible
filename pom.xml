@@ -6,7 +6,36 @@
 
     <groupId>io.github.sartner</groupId>
     <artifactId>dubbo-dubbox-compatible</artifactId>
-    <version>2.7.7-SNAPSHOT</version>
+    <version>2.7.7</version>
+
+    <name>dubbo-dubbox-compatible</name>
+    <description>
+        Provides a solution for dubbo/dubbox, make them compatible with each other.
+    </description>
+    <url>https://github.com/sartner/dubbo-dubbox-compatible</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/sartner/dubbo-dubbox-compatible</url>
+        <connection>scm:git:https://github.com/sartner/dubbo-dubbox-compatible.git</connection>
+        <developerConnection>scm:git:https://github.com/sartner/dubbo-dubbox-compatible.git</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Sartner</name>
+            <email>sartner@foxmail.com</email>
+            <organization>https://github.com/sartner</organization>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -31,6 +60,20 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>3.2.1</version>
                 <executions>
@@ -43,8 +86,32 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
-
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>sonatype</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+    </distributionManagement>
 </project>
